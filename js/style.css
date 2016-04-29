@@ -21,7 +21,6 @@ input {
 }
 .updated {
       background-color: auto;
-      border:1px solid #ccc;
       animation-duration: 1s;
       animation-name: update;
       animation-iteration-count: 2;
