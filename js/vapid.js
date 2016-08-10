@@ -186,7 +186,7 @@ class VapidToken {
                 return this.export_public_raw()
                     .then( pubKey => {
                         return {
-                            authorization: "Bearer " + content + "." + sig,
+                            authorization: "WebPush " + content + "." + sig,
                             "crypto-key": "p256ecdsa=" + pubKey,
                             publicKey: pubKey,
                         }
@@ -206,8 +206,11 @@ class VapidToken {
          * :param token: the Authorization header bearer token
          */
 
-        // Ideally, just the bearer token, Cheat a little to be nice to the dev.
-        if (token.toLowerCase().split(" ")[0] == "bearer") {
+        // Ideally, just the bearer token, Cheat a little to be nice to
+        // the dev.
+        header = token.toLowerCase().split(" ")[0];
+
+        if (header == "webpush" || header == "bearer") {
             token = token.split(" ")[1];
         }
 

@@ -103,7 +103,7 @@ class VapidTestCase(unittest.TestCase):
         eq_(result['Crypto-Key'],
             'id=previous,'
             'p256ecdsa=' + T_PUBLIC_RAW)
-        items = jws.verify(result['Authorization'][7:],
+        items = jws.verify(result['Authorization'].split(' ')[1],
                            v.public_key,
                            algorithms=["ES256"])
         eq_(json.loads(items), claims)
