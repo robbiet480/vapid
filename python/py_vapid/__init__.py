@@ -10,8 +10,6 @@ import ecdsa
 import logging
 from jose import jws
 
-__version__ = "0.2"
-
 
 class VapidException(Exception):
     pass
@@ -106,10 +104,6 @@ class Vapid(object):
         """
         if not claims.get('exp'):
             claims['exp'] = int(time.time()) + 86400
-        if not claims.get('aud'):
-            raise VapidException(
-                "Missing 'aud' from claims. "
-                "'aud' is your site's URL.")
         if not claims.get('sub'):
             raise VapidException(
                 "Missing 'sub' from claims. "
